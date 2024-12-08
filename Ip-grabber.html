@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feira de Ciências - Captura de IP</title>
+</head>
+<body>
+    <h1>Bem-vindo à nossa Feira de Ciências!</h1>
+    <p>Seu endereço IP é: <span id="ip-address"></span></p>
+
+    <script>
+        // Função para obter o endereço IP do visitante
+        function getIPAddress() {
+            fetch('https://api64.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip-address').innerText = data.ip;
+                })
+                .catch(error => {
+                    console.error('Erro ao obter IP:', error);
+                });
+        }
+
+        // Chamar a função ao carregar a página
+        window.onload = getIPAddress;
+    </script>
+</body>
+</html>
